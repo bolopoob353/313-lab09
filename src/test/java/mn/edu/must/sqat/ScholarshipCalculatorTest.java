@@ -121,4 +121,20 @@ class ScholarshipCalculatorTest {
     void scholarshipLowGpaZero() {
         assertEquals(0, calc.scholarship(2.5, 20, false));
     }
+    
+    
+    // ===== Part C: gpa loop boundaries (0 / 1 / 2+) =====
+    // 0 удаа: gpaNullThrows ба gpaEmptyThrows 
+
+    @Test
+    void gpaSingleElement() {
+        // 1 удаа: давталт яг нэг удаа ажиллана
+        assertEquals(4.0, calc.gpa(new double[]{95}), 0.001);
+    }
+
+    @Test
+    void gpaFourElements() {
+        // 2+ удаа: A=4, B=3, C=2, D=1 -> 10 / 4 = 2.5
+        assertEquals(2.5, calc.gpa(new double[]{95, 85, 75, 65}), 0.001);
+    }
 }
