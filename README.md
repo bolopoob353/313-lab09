@@ -21,8 +21,8 @@ OS name: "linux", version: "7.0.0-38-generic", arch: "amd64", family: "unix"
 
 ScholarshipCalculatorTest дотор хэвийн урсгалын 5 тест бичсэн: letterGradeA, gpaTwoScores, scholarshipFull, scholarshipSeventy, scholarshipViolationZero.
 
-- Хамралт (results/jacoco-A.csv): $(cov results/jacoco-A.csv)
-- Тестийн үр дүн (results/mvn-verify-A.txt): $(tr_ results/mvn-verify-A.txt)
+- Хамралт (results/jacoco-A.csv): Line <<LINE_COVERED>>/<<LINE_MISSED+LINE_COVERED>> (<<%>>), Branch <<BRANCH_COVERED>>/<<BRANCH_MISSED+BRANCH_COVERED>> (<<%>>)
+- Тестийн үр дүн (results/mvn-verify-A.txt): Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
 
 Тайлан дээр letterGrade-ийн B, C, D, F салаа, алдаа шидэх (throw) замууд, gpa-ийн F дүн, scholarship-ийн кредит дутуу болон 50, 0 тохиолдол шар эсвэл улаан өнгөтэй байсан. Happy path тест зөвхөн гол замыг дайрдаг, алдааны болон заагийн замыг дайрдаггүй гэдгийг эндээс харсан.
 
@@ -33,8 +33,9 @@ scholarship()-ийн CFG-г зурсан: 11 зангилаа, 10 ирмэг, 5 
 ![scholarship() CFG](CFG.jpeg)
 Дутуу салаануудыг нөхөх тестүүд нэмсэн: letterGrade-ийн B, C, D, F болон хоёр throw, gpa-ийн null, хоосон массив, бүх дүнгийн төрөл, scholarship-ийн гурван throw ба кредит дутуу, 50, 0 тохиолдлууд.
 
-- Хамралт (results/jacoco-B.csv): $(cov results/jacoco-B.csv)
-- Тестийн үр дүн (results/mvn-verify-B.txt): $(tr_ results/mvn-verify-B.txt)
+- Хамралт (results/jacoco-B.csv): Line 25/25 (100.0%), Branch 41/41 (100.0%). BRANCH_MISSED=0, LINE_MISSED=0.
+- Тестийн үр дүн (results/mvn-verify-B.txt): Tests run: 21, Failures: 0, Errors: 0, Skipped: 0
+
 
 CFG шийдвэр бүрийг нэг зангилаа гэж үздэг боловч JaCoCo || ба && доторх нөхцөл бүрийг тусад нь тоолдог. Тиймээс gpa>4, credits<0, credits>=15 ба credits>=12 нөхцөлүүдийг тус тусад нь шалгах нэмэлт тест хэрэгтэй болсон.
 
@@ -57,7 +58,9 @@ letterGrade-ийн зааг утгын 10 тест нэмсэн: 0, 59.99, 60, 6
 
 Унасан тест:
 
-    $FAILLINE
+```text
+<<mvn-test-D-fail.txt-ээс expected: гэсэн мөрийг хуул>>
+```
 
 Шалтгаан: ScholarshipCalculator.letterGrade дотор if (score > 60) гэж бичсэн, харин спецификаци 60-ыг D гэдэг. Засвар: > гэснийг >= болгосон
 
