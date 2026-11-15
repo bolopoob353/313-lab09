@@ -30,6 +30,7 @@ ScholarshipCalculatorTest дотор хэвийн урсгалын 5 тест б
 ## Хэсэг B: CFG ба Branch 100%
 
 scholarship()-ийн CFG-г зурсан: 11 зангилаа, 10 ирмэг, 5 шийдвэр (B1, B3, B5, B7, B9). 
+![scholarship() CFG](CFG.jpeg)
 Дутуу салаануудыг нөхөх тестүүд нэмсэн: letterGrade-ийн B, C, D, F болон хоёр throw, gpa-ийн null, хоосон массив, бүх дүнгийн төрөл, scholarship-ийн гурван throw ба кредит дутуу, 50, 0 тохиолдлууд.
 
 - Хамралт (results/jacoco-B.csv): $(cov results/jacoco-B.csv)
