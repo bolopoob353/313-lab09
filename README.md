@@ -59,7 +59,7 @@ letterGrade-ийн зааг утгын 10 тест нэмсэн: 0, 59.99, 60, 6
 Унасан тест:
 
 ```text
-<<mvn-test-D-fail.txt-ээс expected: гэсэн мөрийг хуул>>
+ScholarshipCalculatorTest.score60IsD:152 expected: <D> but was: <F>
 ```
 
 Шалтгаан: ScholarshipCalculator.letterGrade дотор if (score > 60) гэж бичсэн, харин спецификаци 60-ыг D гэдэг. Засвар: > гэснийг >= болгосон
