@@ -17,11 +17,11 @@ Java version: 17.0.20.1, vendor: Ubuntu, runtime: /usr/lib/jvm/java-17-openjdk-a
 Default locale: en_US, platform encoding: UTF-8
 OS name: "linux", version: "7.0.0-38-generic", arch: "amd64", family: "unix"
 
-## Хэсэг А: Happy path эхний хэмжилт
+## Хэсэг А: Happy path ба эхний хэмжилт
 
 ScholarshipCalculatorTest дотор хэвийн урсгалын 5 тест бичсэн: letterGradeA, gpaTwoScores, scholarshipFull, scholarshipSeventy, scholarshipViolationZero.
 
-- Хамралт (results/jacoco-A.csv): Line <<LINE_COVERED>>/<<LINE_MISSED+LINE_COVERED>> (<<%>>), Branch <<BRANCH_COVERED>>/<<BRANCH_MISSED+BRANCH_COVERED>> (<<%>>)
+- Хамралт (results/jacoco-A.csv): Line 15/25 (60.0%), Branch 21/41 (51.2%)
 - Тестийн үр дүн (results/mvn-verify-A.txt): Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
 
 Тайлан дээр letterGrade-ийн B, C, D, F салаа, алдаа шидэх (throw) замууд, gpa-ийн F дүн, scholarship-ийн кредит дутуу болон 50, 0 тохиолдол шар эсвэл улаан өнгөтэй байсан. Happy path тест зөвхөн гол замыг дайрдаг, алдааны болон заагийн замыг дайрдаггүй гэдгийг эндээс харсан.
@@ -30,7 +30,9 @@ ScholarshipCalculatorTest дотор хэвийн урсгалын 5 тест б
 ## Хэсэг B: CFG ба Branch 100%
 
 scholarship()-ийн CFG-г зурсан: 11 зангилаа, 10 ирмэг, 5 шийдвэр (B1, B3, B5, B7, B9). 
-![scholarship() CFG](CFG.jpeg)
+
+![scholarship() CFG](cfg.png)
+
 Дутуу салаануудыг нөхөх тестүүд нэмсэн: letterGrade-ийн B, C, D, F болон хоёр throw, gpa-ийн null, хоосон массив, бүх дүнгийн төрөл, scholarship-ийн гурван throw ба кредит дутуу, 50, 0 тохиолдлууд.
 
 - Хамралт (results/jacoco-B.csv): Line 25/25 (100.0%), Branch 41/41 (100.0%). BRANCH_MISSED=0, LINE_MISSED=0.
@@ -54,7 +56,7 @@ gpa()-ийн давталтад Лекц 9-ийн 0 / 1 / 2+ дүрмийг хэ
 ## Хэсэг D: 100% хамралттай ч алдаа амьд
 
 letterGrade-ийн зааг утгын 10 тест нэмсэн: 0, 59.99, 60, 69.99, 70, 79.99, 80, 89.99, 90, 100.
-Засахаас өмнө (results/mvn-test-D-fail.txt): $(tr_ results/mvn-test-D-fail.txt)
+Засахаас өмнө (results/mvn-test-D-fail.txt): Tests run: 33, Failures: 1, Errors: 0, Skipped: 0
 
 Унасан тест:
 
@@ -62,10 +64,10 @@ letterGrade-ийн зааг утгын 10 тест нэмсэн: 0, 59.99, 60, 6
 ScholarshipCalculatorTest.score60IsD:152 expected: <D> but was: <F>
 ```
 
-Шалтгаан: ScholarshipCalculator.letterGrade дотор if (score > 60) гэж бичсэн, харин спецификаци 60-ыг D гэдэг. Засвар: > гэснийг >= болгосон
+Шалтгаан: ScholarshipCalculator.letterGrade дотор if (score > 60) гэж бичсэн, харин спецификаци 60-ыг D гэдэг. Засвар: > гэснийг >= болгосон (тусдаа commit).
 
-Засварын дараа (results/mvn-verify-final.txt): $(tr_ results/mvn-verify-final.txt)
-Эцсийн хамралт (results/jacoco-final.csv): $(cov results/jacoco-final.csv)
+Засварын дараа (results/mvn-verify-final.txt): Tests run: 33, Failures: 0, Errors: 0, Skipped: 0
+Эцсийн хамралт (results/jacoco-final.csv): Line 25/25 (100.0%), Branch 41/41 (100.0%). BRANCH_MISSED=0, LINE_MISSED=0.
 
 Дүгнэлт: Хэсэг B-ийн төгсгөлд Branch 100% байсан ч letterGrade(60) алдаа байсан. Хамралт нь мөр, салаа гүйцэтгэгдсэнийг харуулдаг, харин буцаасан утга зөв эсэхийг шалгадаггүй. Зөв утгыг шалгах нь тестийн assertion-ы үүрэг, зааг утгын тест тусдаа хэрэгтэй. Иймээс 100% хамралт нь алдаа байхгүй гэсэн үг биш.
 
